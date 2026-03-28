@@ -27,9 +27,16 @@ Mở browser: http://localhost:5173
 
 ## Bước 3: Test
 
-1. Paste link Shopee vào ô input (ví dụ):
+1. Paste link Shopee vào ô input (hỗ trợ cả 2 loại link):
+   
+   **Link đầy đủ:**
    ```
    https://shopee.vn/Nồi-cơm-cao-tần-Tefal-Rice-Master-Max-RK819868-1.8L-i.254657873.26963411782
+   ```
+   
+   **Link rút gọn:**
+   ```
+   https://s.shopee.vn/1qXaxVE1xR
    ```
 
 2. Click "🔥 Tạo Link Ngay"

@@ -55,14 +55,20 @@ VITE_SUB_ID_2=yourname
 ## 📖 Hướng dẫn sử dụng
 
 1. **Lấy Affiliate ID của bạn**
-   - Đăng ký tài khoản Shopee Affiliate
+   - Đăng ký tại [Shopee Affiliate](https://affiliate.shopee.vn)
    - Lấy Affiliate ID từ dashboard
 
-2. **Sử dụng công cụ**
-   - Nhập link sản phẩm Shopee vào ô "Link sản phẩm Shopee"
-   - Nhập Affiliate ID của bạn
-   - Nhập Sub ID để tracking (mặc định: addlivetag)
+2. **Config environment variables** (xem bên trên)
+
+3. **Sử dụng công cụ**
+   - Paste link sản phẩm Shopee (hỗ trợ cả link đầy đủ và link rút gọn)
    - Click "🔥 Tạo Link Ngay"
+   - Copy link affiliate
+   - Dán vào comment Facebook
+
+**Hỗ trợ 2 loại link:**
+- Link đầy đủ: `https://shopee.vn/product-name-i.123456.789012`
+- Link rút gọn: `https://s.shopee.vn/1qXaxVE1xR`
    - Copy link affiliate đã tạo
    - Dán vào comment Facebook
 

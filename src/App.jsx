@@ -29,31 +29,41 @@ function App() {
         );
       }
 
-      // Extract product info from Shopee URL
-      const urlPattern = /shopee\.vn\/.*-i\.(\d+)\.(\d+)/;
-      const match = shopeeUrl.match(urlPattern);
+      // Validate Shopee URL
+      const isShortLink = /s\.shopee\.vn\//.test(shopeeUrl);
+      const isFullLink = /shopee\.vn\/.*-i\.(\d+)\.(\d+)/.test(shopeeUrl);
 
-      if (!match) {
+      if (!isShortLink && !isFullLink) {
         throw new Error("Link Shopee không hợp lệ. Vui lòng kiểm tra lại.");
       }
 
-      const shopId = match[1];
-      const itemId = match[2];
+      let originLink;
 
-      // Parse URL to get all parameters
-      const urlObj = new URL(shopeeUrl);
-      const extraParams = urlObj.searchParams.get("extraParams");
-      const spAtk = urlObj.searchParams.get("sp_atk");
-      const xptdk = urlObj.searchParams.get("xptdk");
+      // Handle shortened Shopee links (s.shopee.vn)
+      if (isShortLink) {
+        originLink = shopeeUrl;
+      } else {
+        // Extract product info from full Shopee URL
+        const urlPattern = /shopee\.vn\/.*-i\.(\d+)\.(\d+)/;
+        const match = shopeeUrl.match(urlPattern);
+        const shopId = match[1];
+        const itemId = match[2];
 
-      // Build origin link
-      let originLink = `https://shopee.vn/opaanlp/${shopId}/${itemId}`;
-      if (extraParams || spAtk || xptdk) {
-        const params = new URLSearchParams();
-        if (extraParams) params.append("extraParams", extraParams);
-        if (spAtk) params.append("sp_atk", spAtk);
-        if (xptdk) params.append("xptdk", xptdk);
-        originLink += "?" + params.toString();
+        // Parse URL to get all parameters
+        const urlObj = new URL(shopeeUrl);
+        const extraParams = urlObj.searchParams.get("extraParams");
+        const spAtk = urlObj.searchParams.get("sp_atk");
+        const xptdk = urlObj.searchParams.get("xptdk");
+
+        // Build origin link
+        originLink = `https://shopee.vn/opaanlp/${shopId}/${itemId}`;
+        if (extraParams || spAtk || xptdk) {
+          const params = new URLSearchParams();
+          if (extraParams) params.append("extraParams", extraParams);
+          if (spAtk) params.append("sp_atk", spAtk);
+          if (xptdk) params.append("xptdk", xptdk);
+          originLink += "?" + params.toString();
+        }
       }
 
       // Build sub_id
@@ -115,7 +125,7 @@ function App() {
               type="text"
               value={shopeeUrl}
               onChange={(e) => setShopeeUrl(e.target.value)}
-              placeholder="https://shopee.vn/product-name-i.123456.789012"
+              placeholder="https://shopee.vn/... hoặc https://s.shopee.vn/..."
               className="input"
               autoFocus
             />
