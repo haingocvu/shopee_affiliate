@@ -32,6 +32,8 @@ export default async function handler(req, res) {
     let finalUrl = url;
     let shopId, itemId;
 
+    // If it's a short link, we need to expand it to get the final URL
+
     // If it's a short link, expand it
     if (isShortLink) {
       try {
