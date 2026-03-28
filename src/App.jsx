@@ -103,9 +103,7 @@ function App() {
           Công cụ tạo link affiliate Shopee cho Facebook miễn phí
         </p>
 
-        {affiliateId ? (
-          <div className="config-info">✅ Affiliate ID đã được config</div>
-        ) : (
+        {!affiliateId && (
           <div className="config-warning">
             ⚠️ Chưa config Affiliate ID. Xem{" "}
             <a href="https://github.com/your-repo#config" target="_blank">
