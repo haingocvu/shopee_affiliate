@@ -37,17 +37,27 @@ function App() {
         throw new Error("Link Shopee không hợp lệ. Vui lòng kiểm tra lại.");
       }
 
-      let originLink;
+      let shopId, itemId, originLink;
 
-      // Handle shortened Shopee links (s.shopee.vn)
       if (isShortLink) {
-        originLink = shopeeUrl;
+        // Expand short link using API
+        const apiUrl = `/api/expand-url?url=${encodeURIComponent(shopeeUrl)}`;
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        if (!data.success) {
+          throw new Error(data.error || "Không thể expand link rút gọn");
+        }
+
+        shopId = data.shopId;
+        itemId = data.itemId;
+        originLink = `https://shopee.vn/opaanlp/${shopId}/${itemId}`;
       } else {
         // Extract product info from full Shopee URL
         const urlPattern = /shopee\.vn\/.*-i\.(\d+)\.(\d+)/;
         const match = shopeeUrl.match(urlPattern);
-        const shopId = match[1];
-        const itemId = match[2];
+        shopId = match[1];
+        itemId = match[2];
 
         // Parse URL to get all parameters
         const urlObj = new URL(shopeeUrl);

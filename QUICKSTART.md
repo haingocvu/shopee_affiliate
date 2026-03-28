@@ -27,14 +27,19 @@ Mở browser: http://localhost:5173
 
 ## Bước 3: Test
 
+⚠️ **Lưu ý về Link Rút Gọn**: 
+- Link rút gọn (`s.shopee.vn`) cần API endpoint để expand
+- API chỉ hoạt động khi deploy lên Vercel
+- Test local: dùng link đầy đủ hoặc deploy lên Vercel trước
+
 1. Paste link Shopee vào ô input (hỗ trợ cả 2 loại link):
    
-   **Link đầy đủ:**
+   **Link đầy đủ (test local OK):**
    ```
    https://shopee.vn/Nồi-cơm-cao-tần-Tefal-Rice-Master-Max-RK819868-1.8L-i.254657873.26963411782
    ```
    
-   **Link rút gọn:**
+   **Link rút gọn (cần deploy lên Vercel):**
    ```
    https://s.shopee.vn/1qXaxVE1xR
    ```

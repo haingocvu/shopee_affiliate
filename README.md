@@ -68,7 +68,14 @@ VITE_SUB_ID_2=yourname
 
 **Hỗ trợ 2 loại link:**
 - Link đầy đủ: `https://shopee.vn/product-name-i.123456.789012`
-- Link rút gọn: `https://s.shopee.vn/1qXaxVE1xR`
+- Link rút gọn: `https://s.shopee.vn/1qXaxVE1xR` (tự động expand qua serverless function)
+
+4. **Cách link hoạt động**
+   - App tự động expand link rút gọn (nếu có)
+   - Tạo link affiliate theo format Shopee API
+   - Link redirect qua `s.shopee.vn/an_redir` với affiliate_id và sub_id
+   - Người dùng nhận mã khuyến mãi khi click
+   - Bạn nhận commission từ Shopee
    - Copy link affiliate đã tạo
    - Dán vào comment Facebook
 
