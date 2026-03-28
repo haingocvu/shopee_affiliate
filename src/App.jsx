@@ -30,7 +30,7 @@ function App() {
       }
 
       // Validate Shopee URL
-      const isShortLink = /s\.shopee\.vn\//.test(shopeeUrl);
+      const isShortLink = /s\.shopee\.vn\/|vn\.shp\.ee\//.test(shopeeUrl);
       const isFullLink = /shopee\.vn\/.*-i\.(\d+)\.(\d+)/.test(shopeeUrl);
 
       if (!isShortLink && !isFullLink) {
@@ -136,7 +136,7 @@ function App() {
                 type="text"
                 value={shopeeUrl}
                 onChange={(e) => setShopeeUrl(e.target.value)}
-                placeholder="https://shopee.vn/... hoặc https://s.shopee.vn/..."
+                placeholder="https://shopee.vn/... hoặc https://s.shopee.vn/... hoặc https://vn.shp.ee/..."
                 className="input"
                 autoFocus
               />

@@ -20,7 +20,11 @@ export default async function handler(req, res) {
   // Validate URL using WHATWG URL API (not url.parse)
   try {
     const parsed = new URL(url);
-    if (!parsed.hostname.endsWith("shopee.vn")) {
+    const validHostnames = ["shopee.vn", "s.shopee.vn", "vn.shp.ee"];
+    const isValid = validHostnames.some(
+      (h) => parsed.hostname === h || parsed.hostname.endsWith("." + h),
+    );
+    if (!isValid) {
       return res.status(400).json({
         success: false,
         error: "Invalid Shopee URL",
@@ -35,7 +39,7 @@ export default async function handler(req, res) {
 
   try {
     // Validate Shopee URL
-    const isShortLink = /s\.shopee\.vn\//.test(url);
+    const isShortLink = /s\.shopee\.vn\/|vn\.shp\.ee\//.test(url);
     const isFullLink = /shopee\.vn\/.*-i\.(\d+)\.(\d+)/.test(url);
 
     if (!isShortLink && !isFullLink) {
