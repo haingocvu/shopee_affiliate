@@ -130,15 +130,27 @@ function App() {
         <form onSubmit={generateAffiliateLink}>
           <div className="form-group">
             <label htmlFor="shopeeUrl">Link sản phẩm Shopee</label>
-            <input
-              id="shopeeUrl"
-              type="text"
-              value={shopeeUrl}
-              onChange={(e) => setShopeeUrl(e.target.value)}
-              placeholder="https://shopee.vn/... hoặc https://s.shopee.vn/..."
-              className="input"
-              autoFocus
-            />
+            <div className="input-wrapper">
+              <input
+                id="shopeeUrl"
+                type="text"
+                value={shopeeUrl}
+                onChange={(e) => setShopeeUrl(e.target.value)}
+                placeholder="https://shopee.vn/... hoặc https://s.shopee.vn/..."
+                className="input"
+                autoFocus
+              />
+              {shopeeUrl && (
+                <button
+                  type="button"
+                  className="btn-clear"
+                  onClick={() => setShopeeUrl("")}
+                  aria-label="Xoá"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
           </div>
           <button type="submit" className="btn-primary" disabled={loading}>
             {loading ? "Đang tạo..." : "🔥 Tạo Link Ngay"}
@@ -152,7 +164,7 @@ function App() {
             <h3>✅ Tạo link thành công!</h3>
 
             <div className="link-box">
-              <label>Link Affiliate:</label>
+              <label>Link húp ngay</label>
               <div className="link-container">
                 <input
                   type="text"
