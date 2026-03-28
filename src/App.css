@@ -65,6 +65,35 @@ h1 {
   font-size: 1rem;
 }
 
+.config-info {
+  background: #d1fae5;
+  border: 2px solid #6ee7b7;
+  color: #065f46;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.config-warning {
+  background: #fef3c7;
+  border: 2px solid #fcd34d;
+  color: #92400e;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.config-warning a {
+  color: #ee4d2d;
+  text-decoration: underline;
+}
+
 .form-group {
   margin-bottom: 1.5rem;
   flex: 1;

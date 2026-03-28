@@ -2,6 +2,16 @@
 
 Công cụ tạo link affiliate Shopee cho Facebook - hoàn toàn miễn phí!
 
+## 🎯 Quick Start
+
+👉 **[Xem hướng dẫn nhanh trong QUICKSTART.md](QUICKSTART.md)**
+
+Tính năng:
+- ✅ Chỉ cần paste link Shopee → Click  "Tạo Link Ngay" → Copy → Done!
+- ✅ Affiliate ID và Sub ID được config qua environment variables
+- ✅ Không cần nhập thông tin mỗi lần sử dụng
+- ✅ Deploy miễn phí lên Vercel/Netlify
+
 ## 🚀 Cài đặt
 
 ```bash

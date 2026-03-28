@@ -3,16 +3,14 @@ import "./App.css";
 
 function App() {
   const [shopeeUrl, setShopeeUrl] = useState("");
-  const [affiliateId, setAffiliateId] = useState(
-    import.meta.env.VITE_AFFILIATE_ID || "",
-  );
-  const [subId1, setSubId1] = useState(
-    import.meta.env.VITE_SUB_ID_1 || "addlivetag",
-  );
-  const [subId2, setSubId2] = useState(import.meta.env.VITE_SUB_ID_2 || "");
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  // Get config from environment variables
+  const affiliateId = import.meta.env.VITE_AFFILIATE_ID || "";
+  const subId1 = import.meta.env.VITE_SUB_ID_1 || "addlivetag";
+  const subId2 = import.meta.env.VITE_SUB_ID_2 || "";
 
   const generateAffiliateLink = async (e) => {
     e.preventDefault();
@@ -26,7 +24,9 @@ function App() {
         throw new Error("Vui lòng nhập link sản phẩm Shopee");
       }
       if (!affiliateId.trim()) {
-        throw new Error("Vui lòng nhập Affiliate ID");
+        throw new Error(
+          "Chưa config Affiliate ID trong environment variables. Vui lòng xem hướng dẫn trong ENV_CONFIG.md",
+        );
       }
 
       // Extract product info from Shopee URL
@@ -103,6 +103,17 @@ function App() {
           Công cụ tạo link affiliate Shopee cho Facebook miễn phí
         </p>
 
+        {affiliateId ? (
+          <div className="config-info">✅ Affiliate ID đã được config</div>
+        ) : (
+          <div className="config-warning">
+            ⚠️ Chưa config Affiliate ID. Xem{" "}
+            <a href="https://github.com/your-repo#config" target="_blank">
+              hướng dẫn
+            </a>
+          </div>
+        )}
+
         <form onSubmit={generateAffiliateLink}>
           <div className="form-group">
             <label htmlFor="shopeeUrl">Link sản phẩm Shopee</label>
@@ -113,47 +124,9 @@ function App() {
               onChange={(e) => setShopeeUrl(e.target.value)}
               placeholder="https://shopee.vn/product-name-i.123456.789012"
               className="input"
+              autoFocus
             />
           </div>
-
-          <div className="form-group">
-            <label htmlFor="affiliateId">Affiliate ID *</label>
-            <input
-              id="affiliateId"
-              type="text"
-              value={affiliateId}
-              onChange={(e) => setAffiliateId(e.target.value)}
-              placeholder="17382370178"
-              className="input"
-            />
-          </div>
-
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="subId1">Sub ID 1</label>
-              <input
-                id="subId1"
-                type="text"
-                value={subId1}
-                onChange={(e) => setSubId1(e.target.value)}
-                placeholder="addlivetag"
-                className="input"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="subId2">Sub ID 2 (tùy chọn)</label>
-              <input
-                id="subId2"
-                type="text"
-                value={subId2}
-                onChange={(e) => setSubId2(e.target.value)}
-                placeholder="username"
-                className="input"
-              />
-            </div>
-          </div>
-
           <button type="submit" className="btn-primary" disabled={loading}>
             {loading ? "Đang tạo..." : "🔥 Tạo Link Ngay"}
           </button>
