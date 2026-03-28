@@ -17,6 +17,22 @@ export default async function handler(req, res) {
     });
   }
 
+  // Validate URL using WHATWG URL API (not url.parse)
+  try {
+    const parsed = new URL(url);
+    if (!parsed.hostname.endsWith("shopee.vn")) {
+      return res.status(400).json({
+        success: false,
+        error: "Invalid Shopee URL",
+      });
+    }
+  } catch {
+    return res.status(400).json({
+      success: false,
+      error: "Invalid URL format",
+    });
+  }
+
   try {
     // Validate Shopee URL
     const isShortLink = /s\.shopee\.vn\//.test(url);
