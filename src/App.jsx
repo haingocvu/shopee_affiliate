@@ -98,11 +98,7 @@ function App() {
   return (
     <div className="container">
       <div className="card">
-        <h1>🛍️ Tạo Link Shopee Affiliate</h1>
-        <p className="subtitle">
-          Công cụ tạo link affiliate Shopee cho Facebook miễn phí
-        </p>
-
+        <h1>🛍️ Tạo Link Shopee</h1>
         {!affiliateId && (
           <div className="config-warning">
             ⚠️ Chưa config Affiliate ID. Xem{" "}
@@ -111,7 +107,6 @@ function App() {
             </a>
           </div>
         )}
-
         <form onSubmit={generateAffiliateLink}>
           <div className="form-group">
             <label htmlFor="shopeeUrl">Link sản phẩm Shopee</label>
@@ -167,12 +162,6 @@ function App() {
           </div>
         )}
       </div>
-
-      <footer className="footer">
-        <p>
-          💡 Hỗ trợ tạo link affiliate Shopee cho Facebook hoàn toàn miễn phí
-        </p>
-      </footer>
     </div>
   );
 }
