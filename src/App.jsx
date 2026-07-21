@@ -178,6 +178,14 @@ function App() {
                 >
                   📋 Copy
                 </button>
+                <a
+                  href={result.affiliateLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-buy-now"
+                >
+                  🛒 Mua Ngay
+                </a>
               </div>
             </div>
 

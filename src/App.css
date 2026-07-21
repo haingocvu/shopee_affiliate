@@ -147,7 +147,9 @@ label {
   padding: 0.25rem 0.4rem;
   border-radius: 50%;
   line-height: 1;
-  transition: color 0.2s, background 0.2s;
+  transition:
+    color 0.2s,
+    background 0.2s;
 }
 
 .btn-clear:hover {
@@ -206,6 +208,27 @@ label {
 
 .btn-copy:hover {
   background: #5568d3;
+  transform: translateY(-2px);
+}
+
+.btn-buy-now {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem 1.5rem;
+  background: #ee4d2d;
+  color: white;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  margin-left: 0.5rem;
+}
+
+.btn-buy-now:hover {
+  background: #d73211;
   transform: translateY(-2px);
 }
 
